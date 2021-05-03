@@ -1,11 +1,11 @@
 {% snapshot mock_orders %}
 
-{% set new_schema = target.schema + '_snapshot' %}
+{% set new_schema = dbt_slin + '_snapshot' %}
 
 {{
     config(
-      target_database='analytics',
-      target_schema=new_schema,
+      target_database='raw',
+      target_schema=dbt_slin_snapshot,
       unique_key='order_id',
 
       strategy='timestamp',
@@ -13,6 +13,6 @@
     )
 }}
 
-select * from raw.{{target.schema}}.mock_orders
+select * from analytics.dbt_slin_snapshot.mock_orders
 
 {% endsnapshot %}
