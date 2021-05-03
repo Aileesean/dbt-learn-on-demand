@@ -1,0 +1,7 @@
+version: 2
+
+sources:
+    - name:dbt_slin
+      database: raw
+      tables:
+        - name: mock_orders
